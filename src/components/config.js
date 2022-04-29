@@ -1,6 +1,7 @@
 import { ChakraProvider, Grid, GridItem, Center, Box } from "@chakra-ui/react";
 import { FaCog } from "react-icons/fa";
 
+
 function Config() {
   return (
     <ChakraProvider>
@@ -13,7 +14,9 @@ function Config() {
               work
             </GridItem>
             <GridItem>
-              <Center><FaCog color="white" /></Center>
+              <Center>
+                <FaCog color="white" />
+              </Center>
             </GridItem>
             <GridItem>
               5<br />
