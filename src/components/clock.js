@@ -1,4 +1,4 @@
-import { ChakraProvider, Box } from "@chakra-ui/react";
+import { ChakraProvider, Box, Container } from "@chakra-ui/react";
 import { CircularProgress, CircularProgressLabel, Center } from "@chakra-ui/react";
 import { useEffect } from "react";
 
@@ -56,10 +56,10 @@ function Clock(props) {
           color="#FF4444"
           size="300px"
           thickness="5px"
+          m={25}
         >
           <CircularProgressLabel>
             <Box color="white" fontSize={16}>
-              {" "}
               combo: {props.combo}
             </Box>
             <Box color="white">
@@ -71,6 +71,7 @@ function Clock(props) {
           </CircularProgressLabel>
         </CircularProgress>
       </Center>
+      
     </ChakraProvider>
   );
 }

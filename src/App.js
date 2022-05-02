@@ -1,6 +1,6 @@
 import "./App.css";
 import Clock from "./components/clock";
-import { ChakraProvider, Box, Grid, GridItem, Center } from "@chakra-ui/react";
+import { ChakraProvider, Box, Grid, GridItem, Center, Container } from "@chakra-ui/react";
 import { FaPlay, FaRedo, FaPause, FaCog, FaCheck } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import useSound from "use-sound";
@@ -182,10 +182,7 @@ function App() {
       <ChakraProvider>
         <Box p={20}>
           <Box
-            fontSize={26}
-            color="white"
-            fontWeight="semi-bold"
-            fontFamily="monospace"
+            className="title"
           >
             POMODORO
           </Box>
@@ -199,6 +196,11 @@ function App() {
           <Controls />
           <Config />
         </Box>
+        <Box>
+        <Container color="white">
+          Made by Parvi with React and Chakra UI. <a href="https://github.com/parvilucifera">GitHub</a>.
+        </Container>
+      </Box>
       </ChakraProvider>
     </div>
   );
