@@ -44,7 +44,6 @@ function App() {
             <FaRedo
               className="btn"
               onClick={() => handleReset()}
-              color="white"
             />
           </Center>
         </Grid>

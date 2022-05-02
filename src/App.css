@@ -20,13 +20,13 @@
 
 .btn:hover {
   transition: 200ms;
-  color: #FF6666;
+  color: #FF4444;
 }
 
 input {
   text-align: center;
   font-weight: bold;
-  background-color: #FF6666;
+  background-color: #FF4444;
   width: 25px;
   color: black;
   border-radius: 25px;

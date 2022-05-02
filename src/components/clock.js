@@ -52,9 +52,9 @@ function Clock(props) {
       <CircularProgress
         value={progress}
         trackColor="#000099"
-        color="#FF6666"
+        color="#FF4444"
         size="300px"
-        thickness="6px"
+        thickness="5px"
       >
         <CircularProgressLabel>
           <Box color="white" fontSize={16}>
