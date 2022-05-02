@@ -2,8 +2,11 @@ import "./App.css";
 import Clock from "./components/clock";
 import { ChakraProvider, Box, Grid, GridItem, Center } from "@chakra-ui/react";
 import { FaPlay, FaRedo, FaPause, FaCog, FaCheck } from "react-icons/fa";
-
 import { useState, useEffect } from "react";
+import useSound from "use-sound";
+import workSfx from "./sfx/work.mp3";
+import breakSfx from "./sfx/break.mp3";
+import pauseSfx from "./sfx/pause.mp3";
 
 function App() {
   const [workTarget, setWorkTarget] = useState(25 * 60);
@@ -14,14 +17,33 @@ function App() {
   const [clockTarget, setClockTarget] = useState(workTarget);
   const [combo, setCombo] = useState(0);
   const [config, setConfig] = useState(false);
+  const [playWork] = useSound(workSfx);
+  const [playBreak] = useSound(breakSfx);
+  const [playPause] = useSound(pauseSfx);
   let tick = 1000;
   let timeout;
 
   function PlayPause() {
     if (counting === false) {
-      return <FaPlay className="btn" onClick={() => setCounting(!counting)} />;
+      return (
+        <FaPlay
+          className="btn"
+          onClick={() => {
+            setCounting(!counting);
+            playWork();
+          }}
+        />
+      );
     } else {
-      return <FaPause className="btn" onClick={() => setCounting(!counting)} />;
+      return (
+        <FaPause
+          className="btn"
+          onClick={() => {
+            setCounting(!counting);
+            playPause();
+          }}
+        />
+      );
     }
   }
 
@@ -88,7 +110,6 @@ function App() {
       return (
         <Center>
           <Box p={5} color="white">
-            
             <Box>
               <form onSubmit={handleSubmit}>
                 <Grid w="200px" templateColumns="repeat(3, 1fr)">
@@ -121,9 +142,9 @@ function App() {
               </form>
             </Box>
             <Box>
-              <p><br />
+              <p>
+                <br />
                 Edit your preferences.
-                
               </p>
             </Box>
           </Box>
@@ -141,9 +162,11 @@ function App() {
     } else if (time === 0 && counting === true) {
       setWorking(!working);
       if (working === true) {
+        playBreak();
         setTime(breakTarget);
         setClockTarget(breakTarget);
       } else {
+        playWork();
         setCombo(combo + 1);
         setTime(workTarget);
         setClockTarget(workTarget);
