@@ -1,6 +1,13 @@
 import "./App.css";
 import Clock from "./components/clock";
-import { ChakraProvider, Box, Grid, GridItem, Center, Container } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  Box,
+  Grid,
+  GridItem,
+  Center,
+  Container,
+} from "@chakra-ui/react";
 import { FaPlay, FaRedo, FaPause, FaCog, FaCheck } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import useSound from "use-sound";
@@ -20,7 +27,8 @@ function App() {
   const [playWork] = useSound(workSfx);
   const [playBreak] = useSound(breakSfx);
   const [playPause] = useSound(pauseSfx);
-  let tick = 1000;
+  const [timeprev, setTimeprev] = useState(0);
+  let tick = 975;
   let timeout;
 
   function PlayPause() {
@@ -158,8 +166,14 @@ function App() {
     if (time > 0 && counting === true) {
       timeout = setTimeout(() => {
         setTime(time - 1);
+        console.log(Date.now() - timeprev - tick); //latency debug
+        setTimeprev(Date.now()) //latency debug
       }, tick);
-    } else if (time === 0 && counting === true) {
+    }
+  });
+
+  useEffect(() => {
+    if (time === 0 && counting === true) {
       setWorking(!working);
       if (working === true) {
         playBreak();
@@ -181,11 +195,7 @@ function App() {
     <div className="App">
       <ChakraProvider>
         <Box p={20}>
-          <Box
-            className="title"
-          >
-            POMODORO
-          </Box>
+          <Box className="title">POMODORO</Box>
           <Clock
             time={time}
             target={clockTarget}
@@ -197,10 +207,11 @@ function App() {
           <Config />
         </Box>
         <Box>
-        <Container color="white">
-          Made by Parvi with React and Chakra UI. <a href="https://github.com/parvilucifera">GitHub</a>.
-        </Container>
-      </Box>
+          <Container className="footer">
+            Made by Parvi with React and Chakra UI.{" "}
+            <a href="https://github.com/parvilucifera">GitHub</a>.
+          </Container>
+        </Box>
       </ChakraProvider>
     </div>
   );

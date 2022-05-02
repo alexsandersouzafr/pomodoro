@@ -40,3 +40,8 @@ input {
   color: black;
   border-radius: 25px;
 }
+
+.footer {
+  font-size: small;
+  color: white;
+}
