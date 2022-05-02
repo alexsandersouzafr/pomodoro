@@ -1,5 +1,5 @@
 import { ChakraProvider, Box } from "@chakra-ui/react";
-import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
+import { CircularProgress, CircularProgressLabel, Center } from "@chakra-ui/react";
 import { useEffect } from "react";
 
 function Clock(props) {
@@ -49,26 +49,28 @@ function Clock(props) {
 
   return (
     <ChakraProvider>
-      <CircularProgress
-        value={progress}
-        trackColor="#000099"
-        color="#FF4444"
-        size="300px"
-        thickness="5px"
-      >
-        <CircularProgressLabel>
-          <Box color="white" fontSize={16}>
-            {" "}
-            combo: {props.combo}
-          </Box>
-          <Box color="white">
-            {minutes(props.time)}:{seconds(props.time)}
-          </Box>
-          <Box>
-            <Status />
-          </Box>
-        </CircularProgressLabel>
-      </CircularProgress>
+      <Center>
+        <CircularProgress
+          value={progress}
+          trackColor="#000099"
+          color="#FF4444"
+          size="300px"
+          thickness="5px"
+        >
+          <CircularProgressLabel>
+            <Box color="white" fontSize={16}>
+              {" "}
+              combo: {props.combo}
+            </Box>
+            <Box color="white">
+              {minutes(props.time)}:{seconds(props.time)}
+            </Box>
+            <Box>
+              <Status />
+            </Box>
+          </CircularProgressLabel>
+        </CircularProgress>
+      </Center>
     </ChakraProvider>
   );
 }

@@ -41,10 +41,7 @@ function App() {
             <PlayPause />
           </Center>
           <Center>
-            <FaRedo
-              className="btn"
-              onClick={() => handleReset()}
-            />
+            <FaRedo className="btn" onClick={() => handleReset()} />
           </Center>
         </Grid>
       </Center>
@@ -55,8 +52,8 @@ function App() {
     event.preventDefault();
     setWorkTarget(event.target.work.value * 60);
     setBreakTarget(event.target.break.value * 60);
-    setTime(event.target.work.value * 60)
-    setClockTarget(event.target.work.value * 60)
+    setTime(event.target.work.value * 60);
+    setClockTarget(event.target.work.value * 60);
     setCounting(false);
     setWorking(true);
     setConfig(false);
@@ -91,35 +88,44 @@ function App() {
       return (
         <Center>
           <Box p={5} color="white">
-            <form onSubmit={handleSubmit}>
-              <Grid w="200px" templateColumns="repeat(3, 1fr)">
-                <GridItem>
-                  <input
-                    type="number"
-                    name="work"
-                    defaultValue={workTarget / 60}
-                  />
-                  <br />
-                  work
-                </GridItem>
-                <GridItem>
-                  <Center>
-                    <button type="submit">
-                      <FaCheck className="btn" />
-                    </button>
-                  </Center>
-                </GridItem>
-                <GridItem>
-                  <input
-                    type="number"
-                    name="break"
-                    defaultValue={breakTarget / 60}
-                  />
-                  <br />
-                  break
-                </GridItem>
-              </Grid>
-            </form>
+            
+            <Box>
+              <form onSubmit={handleSubmit}>
+                <Grid w="200px" templateColumns="repeat(3, 1fr)">
+                  <GridItem>
+                    <input
+                      type="number"
+                      name="work"
+                      defaultValue={workTarget / 60}
+                    />
+                    <br />
+                    work
+                  </GridItem>
+                  <GridItem>
+                    <Center>
+                      <button type="submit">
+                        <FaCheck className="btn" />
+                      </button>
+                    </Center>
+                  </GridItem>
+                  <GridItem>
+                    <input
+                      type="number"
+                      name="break"
+                      defaultValue={breakTarget / 60}
+                    />
+                    <br />
+                    break
+                  </GridItem>
+                </Grid>
+              </form>
+            </Box>
+            <Box>
+              <p><br />
+                Edit your preferences.
+                
+              </p>
+            </Box>
           </Box>
         </Center>
       );
@@ -167,7 +173,6 @@ function App() {
             working={working}
             combo={combo}
           />
-
           <Controls />
           <Config />
         </Box>
