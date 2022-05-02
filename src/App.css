@@ -11,3 +11,23 @@
   from {color:rgb(0, 14, 92)}
   to {color: white;}
 }
+
+.btn {
+  transition: 200ms;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transition: 200ms;
+  color: #FF6666;
+}
+
+input {
+  text-align: center;
+  font-weight: bold;
+  background-color: #FF6666;
+  width: 25px;
+  color: black;
+  border-radius: 25px;
+}

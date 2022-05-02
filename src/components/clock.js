@@ -3,14 +3,21 @@ import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import { useEffect } from "react";
 
 function Clock(props) {
-
-function Status() {
-  if (props.working === true) {
-    return <Box className="transition" fontSize={20}>working</Box>
-  } else {
-    return <Box className="transition" fontSize={20}>break</Box>
+  function Status() {
+    if (props.working === true) {
+      return (
+        <Box className="transition" fontSize={20}>
+          working
+        </Box>
+      );
+    } else {
+      return (
+        <Box className="transition" fontSize={20}>
+          break
+        </Box>
+      );
+    }
   }
-}
 
   let minutes = (time) => {
     if (time >= 60) {
@@ -38,8 +45,7 @@ function Status() {
     return fseconds;
   };
 
-  let progress = 100 / props.target * props.time;
-
+  let progress = (100 / props.target) * props.time;
 
   return (
     <ChakraProvider>
@@ -51,17 +57,18 @@ function Status() {
         thickness="6px"
       >
         <CircularProgressLabel>
-        <Box color="white" fontSize={16}> combo: {props.combo}</Box>
+          <Box color="white" fontSize={16}>
+            {" "}
+            combo: {props.combo}
+          </Box>
           <Box color="white">
             {minutes(props.time)}:{seconds(props.time)}
           </Box>
           <Box>
             <Status />
-            
           </Box>
         </CircularProgressLabel>
       </CircularProgress>
-      
     </ChakraProvider>
   );
 }
