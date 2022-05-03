@@ -28,7 +28,7 @@ function App() {
   const [playBreak] = useSound(breakSfx);
   const [playPause] = useSound(pauseSfx);
   const [timeprev, setTimeprev] = useState(0);
-  let tick = 975;
+  let tick = 1000;
   let timeout;
 
   function PlayPause() {
@@ -161,14 +161,16 @@ function App() {
     }
   }
 
-  // Handle pause and stop of countdown
+  // Handle play and stop of countdown
+  let nextAt = new Date().getTime() + tick;
+
   useEffect(() => {
     if (time > 0 && counting === true) {
       timeout = setTimeout(() => {
         setTime(time - 1);
-        console.log(Date.now() - timeprev - tick); //latency debug
-        setTimeprev(Date.now()) //latency debug
-      }, tick);
+        // console.log(Date.now() - timeprev - tick); //latency debug
+        // setTimeprev(Date.now()); //latency debug
+      }, nextAt - new Date().getTime());
     }
   });
 

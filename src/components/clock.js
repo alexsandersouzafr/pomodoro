@@ -2,7 +2,10 @@ import { ChakraProvider, Box, Container } from "@chakra-ui/react";
 import { CircularProgress, CircularProgressLabel, Center } from "@chakra-ui/react";
 import { useEffect } from "react";
 
+
+
 function Clock(props) {
+
   function Status() {
     if (props.working === true) {
       return (
