@@ -39,6 +39,7 @@ function App() {
         <FaPlay
           className="btn"
           onClick={() => {
+            clearTimeout(timeout);
             setCounting(!counting);
             playWork();
           }}
@@ -49,6 +50,7 @@ function App() {
         <FaPause
           className="btn"
           onClick={() => {
+            clearTimeout(timeout);
             setCounting(!counting);
             playPause();
           }}
